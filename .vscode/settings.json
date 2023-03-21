@@ -13,7 +13,7 @@
     "editor.defaultFormatter": "HookyQR.beautify"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",

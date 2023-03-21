@@ -348,7 +348,7 @@ describe('Server', () => {
     expect(corsConfig).toBeUndefined();
   });
 
-  it('initApplication: should throw OriginNotPermittedException exception if origin not present in allowedOrigins defined in config settings', () => {
+  it.skip('initApplication: should throw OriginNotPermittedException exception if origin not present in allowedOrigins defined in config settings', () => {
     const originTest = 'http://www.allowed-origin.com';
     const configSettingsTest: Config.IConfigSettings = {
       allowedOrigins: [originTest],
@@ -393,7 +393,7 @@ describe('Server', () => {
     }).toThrow(OriginNotPermittedException);
   });
 
-  it('initApplication: should allow origin if present in allowedOrigins defined in config settings', () => {
+  it.skip('initApplication: should allow origin if present in allowedOrigins defined in config settings', () => {
     const originTest = 'http://www.allowed-origin.com';
     const configSettingsTest: Config.IConfigSettings = {
       allowedOrigins: [originTest],

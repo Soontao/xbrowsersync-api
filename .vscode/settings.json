@@ -20,7 +20,7 @@
     "editor.formatOnSave": false
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
   "beautify.config": {
@@ -30,13 +30,9 @@
   },
   "beautify.language": {
     "js": {
-      "ext": [
-        "json"
-      ]
+      "ext": ["json"]
     },
-    "html": [
-      "html"
-    ]
+    "html": ["html"]
   },
   "css.validate": false,
   "editor.codeActionsOnSave": {
@@ -51,10 +47,7 @@
   "editor.tabSize": 2,
   "eslint.alwaysShowStatus": true,
   "eslint.enable": true,
-  "eslint.validate": [
-    "javascript",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "typescript"],
   "files.eol": "\n",
   "git.ignoreLimitWarning": true,
   "html.format.enable": false,
@@ -64,13 +57,7 @@
   "html.format.wrapLineLength": 120,
   "scss.validate": false,
   "stylelint.enable": true,
-  "stylelint.validate": [
-    "css",
-    "html",
-    "markdown",
-    "sass",
-    "scss"
-  ],
+  "stylelint.validate": ["css", "html", "markdown", "sass", "scss"],
   "typescript.tsdk": "./node_modules/typescript/lib",
   "files.exclude": {
     "**/node_modules": true

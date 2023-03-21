@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "rootDir": "src",
     "skipLibCheck": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "target": "ES2020"
   },
   "include": ["src"],

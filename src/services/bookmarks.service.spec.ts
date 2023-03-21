@@ -456,7 +456,7 @@ describe('BookmarksService', () => {
     } as any);
     let updatePayload: IBookmarks;
     jest.spyOn(BookmarksModel, 'findOneAndUpdate').mockImplementation((...args): any => {
-      updatePayload = args[1];
+      updatePayload = args[1] as any;
       return {
         exec: () => Promise.resolve(dbOpResult),
       };

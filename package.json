@@ -27,7 +27,8 @@
     "watch": "npm run build:api:dev && concurrently --kill-others \"npm run watch:api\" \"npm run watch:docs\""
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=8"
   },
   "dependencies": {
     "bootstrap": "^4.6.2",

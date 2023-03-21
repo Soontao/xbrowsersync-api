@@ -4,3 +4,4 @@ config/settings.json
 coverage/
 dockerfile
 node_modules/
+dist/**

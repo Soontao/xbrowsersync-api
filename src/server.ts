@@ -207,6 +207,7 @@ export const initRoutes = (app: express.Express): void => {
   const router = express.Router();
   app.use(Config.get().server.relativePath, router);
 
+  app.get('/', (req, res) => res.json({ server: 'xbrowsersync', status: 200 }));
   // Initialise services
   const newSyncLogsService = new NewSyncLogsService(null, logMessage);
   const bookmarksService = new BookmarksService(newSyncLogsService, logMessage);

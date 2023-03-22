@@ -8,8 +8,8 @@
     "name": "xbrowsersync",
     "password": "",
     "port": 27017,
-    "ssl": false,
-    "useSRV": false,
+    "ssl": true,
+    "useSRV": true,
     "username": ""
   },
   "location": "",
@@ -27,7 +27,7 @@
     }
   },
   "maxSyncs": 5242,
-  "maxSyncSize": 512000,
+  "maxSyncSize": 5120000,
   "server": {
     "behindProxy": false,
     "host": "127.0.0.1",
@@ -36,7 +36,7 @@
       "enabled": false,
       "keyPath": ""
     },
-    "port": 8080,
+    "port": 9056,
     "relativePath": "/"
   },
   "status": {

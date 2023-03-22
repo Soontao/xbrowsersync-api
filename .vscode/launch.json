@@ -3,26 +3,15 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
-  "configurations": [{
-      "name": "Attach",
-      "port": 9229,
-      "request": "attach",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "type": "pwa-node"
-    },
+  "configurations": [
     {
       "name": "Debug API",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/dist/api.js",
-      "preLaunchTask": "build",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "sourceMaps": true,
-      "smartStep": true
+      "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+      "args": ["${workspaceFolder}/src/api.ts"],
+      "outputCapture": "std",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "name": "Debug docs",
@@ -36,23 +25,15 @@
       "sourceMapPathOverrides": {
         "webpack:///./src/docs/index.ts": "${workspaceFolder}/src/docs/index.ts"
       },
-      "runtimeArgs": [
-        "--remote-debugging-port=9222",
-        "-incognito"
-      ]
+      "runtimeArgs": ["--remote-debugging-port=9222", "-incognito"]
     },
     {
       "name": "Run unit/integration tests",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": [
-        "-i",
-        "--config",
-        "jestconfig.unit.json"
-      ],
+      "args": ["-i", "--config", "jestconfig.unit.json"],
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
       "sourceMaps": true,
       "smartStep": true
     },
@@ -61,13 +42,8 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": [
-        "-i",
-        "--config",
-        "jestconfig.e2e.json"
-      ],
+      "args": ["-i", "--config", "jestconfig.e2e.json"],
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
       "sourceMaps": true,
       "smartStep": true
     }

@@ -26,13 +26,19 @@ export const connect = async (
   const creds = username && password ? `${encodeURIComponent(username)}:${encodeURIComponent(password)}@` : '';
 
   // Create mongo connection uri using host and db name defined in config settings
-  let dbServerUrl = 'mongodb';
-  if (Config.get().db.useSRV) {
-    dbServerUrl += `+srv://${creds}${host}/${Config.get().db.name}`;
+  let dbServerUrl: string;
+
+  if (process.env.XBROWSERSYNC_DB_URI !== undefined) {
+    dbServerUrl = process.env.XBROWSERSYNC_DB_URI;
   } else {
-    dbServerUrl += `://${creds}${host}:${Config.get().db.port}/${Config.get().db.name}`;
+    dbServerUrl = 'mongodb';
+    if (Config.get().db.useSRV) {
+      dbServerUrl += `+srv://${creds}${host}/${Config.get().db.name}`;
+    } else {
+      dbServerUrl += `://${creds}${host}:${Config.get().db.port}/${Config.get().db.name}`;
+    }
+    dbServerUrl += Config.get().db.authSource ? `?authSource=${Config.get().db.authSource}` : '';
   }
-  dbServerUrl += Config.get().db.authSource ? `?authSource=${Config.get().db.authSource}` : '';
 
   // Connect to the database
   try {

@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm ci
-RUN npm run build
+RUN npm run build:api
 
 FROM node:lts-alpine as production
 
@@ -14,7 +14,7 @@ COPY --from=build /usr/src/app/package.json .
 COPY --from=build /usr/src/app/package-lock.json .
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/config ./config
-RUN npm ci --production
+RUN npm ci --omit=dev
 
 EXPOSE 9056
 

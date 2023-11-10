@@ -19,6 +19,7 @@ export const connect = async (
   };
 
   const host = process.env.XBROWSERSYNC_DB_HOST ?? Config.get().db.host;
+  const port = process.env.XBROWSERSYNC_DB_PORT ?? Config.get().db.port;
 
   // Configure db credentials
   const username = process.env.XBROWSERSYNC_DB_USER ?? Config.get().db.username;
@@ -35,7 +36,7 @@ export const connect = async (
     if (Config.get().db.useSRV) {
       dbServerUrl += `+srv://${creds}${host}/${Config.get().db.name}`;
     } else {
-      dbServerUrl += `://${creds}${host}:${Config.get().db.port}/${Config.get().db.name}`;
+      dbServerUrl += `://${creds}${host}:${port}/${Config.get().db.name}`;
     }
     dbServerUrl += Config.get().db.authSource ? `?authSource=${Config.get().db.authSource}` : '';
   }

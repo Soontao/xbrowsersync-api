@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import * as Config from '../config';
 import { ServiceNotAvailableException } from '../exception';

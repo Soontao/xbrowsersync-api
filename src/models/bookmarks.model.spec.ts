@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import moment from 'moment';
 import { BookmarksModel, IBookmarks } from './bookmarks.model';

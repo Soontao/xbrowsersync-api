@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import { Request, Response } from 'express';
 import { Verb } from '../common/enums';

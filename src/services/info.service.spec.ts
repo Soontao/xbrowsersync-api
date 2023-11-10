@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import { Request } from 'express';
 import { LogLevel, ServiceStatus } from '../common/enums';

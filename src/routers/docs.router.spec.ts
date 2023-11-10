@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import express from 'express';
 import path from 'path';

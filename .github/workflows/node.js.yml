@@ -24,11 +24,12 @@ jobs:
           MONGO_INITDB_ROOT_USERNAME: xbs
           MONGO_INITDB_ROOT_PASSWORD: xbs_pwd
           MONGO_INITDB_DATABASE: xbs
-        options: >-
-          --health-cmd mongo
-          --health-interval 20s
-          --health-timeout 10s
-          --health-retries 5
+          options: >-
+            --health-cmd "echo 'db.runCommand("ping").ok' | mongosh --quiet"
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
+            --name mongo_container
         ports:
           - 27017:27017
 

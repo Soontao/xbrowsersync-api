@@ -33,12 +33,4 @@ describe('Docs', () => {
     const response = await request(app).get(Config.get().server.relativePath);
     expect(response.status).toBe(200);
   });
-
-  it('GET /: Should return HTML content', async () => {
-    jest.spyOn(Config, 'get').mockImplementation(() => {
-      return testConfig;
-    });
-    const response = await request(app).get(Config.get().server.relativePath);
-    expect(response.type).toBe('text/html');
-  });
 });

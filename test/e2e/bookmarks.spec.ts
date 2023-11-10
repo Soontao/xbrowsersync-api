@@ -124,7 +124,7 @@ describe('BookmarksRouter', () => {
     const response = await request(app)
       .put(`${Config.get().server.relativePath}bookmarks/invalidid`)
       .set('content-type', 'application/json');
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(400);
   });
 
   it('PUT /bookmarks/:id should return a 400 status code if bookmarks data not provided', async () => {

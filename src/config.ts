@@ -1,6 +1,9 @@
 import merge from 'deepmerge';
+import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
+
+dotenv.config();
 
 export interface IConfigSettings {
   allowedOrigins?: string[];
@@ -83,7 +86,14 @@ export const get = (force?: boolean): IConfigSettings => {
   const userSettings = getUserSettings(pathToConfig);
 
   // Merge default and user settings
-  const settings: any = merge(defaultSettings, userSettings);
+  const settings: any = merge(defaultSettings, userSettings, {
+    db: {
+      host: process.env.XBROWSERSYNC_DB_HOST,
+      port: process.env.XBROWSERSYNC_DB_PORT,
+      user: process.env.XBROWSERSYNC_DB_USER,
+      password: process.env.XBROWSERSYNC_DB_PWD,
+    },
+  } as any);
 
   // Get current version number
   const version = getPackageVersion();

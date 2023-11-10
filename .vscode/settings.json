@@ -64,5 +64,7 @@
   },
   "search.exclude": {
     "**/dist": true
-  }
+  },
+  "cSpell.words": ["XBROWSERSYNC"],
+  "jest.autoRun": "off"
 }

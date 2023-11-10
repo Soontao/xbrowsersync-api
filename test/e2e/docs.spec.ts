@@ -1,10 +1,13 @@
 import 'jest';
+import dotenv from 'dotenv';
 import express from 'express';
 import http from 'http';
 import https from 'https';
 import request from 'supertest';
 import * as Config from '../../src/config';
 import * as Server from '../../src/server';
+
+dotenv.config();
 
 describe('Docs', () => {
   let app: express.Express;

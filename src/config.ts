@@ -1,9 +1,6 @@
 import merge from 'deepmerge';
-import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
-
-dotenv.config();
 
 export interface IConfigSettings {
   allowedOrigins?: string[];

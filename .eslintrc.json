@@ -13,8 +13,14 @@
     "project": "./tsconfig.eslint.json",
     "sourceType": "module"
   },
-  "plugins": ["simple-import-sort", "unused-imports"],
+  "plugins": ["import"],
   "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/lines-between-class-members": "off",
@@ -27,12 +33,6 @@
     "global-require": "off",
     "import/extensions": "off",
     "import/no-dynamic-require": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ],
     "import/order": "off",
     "import/prefer-default-export": "off",
     "no-bitwise": "off",
@@ -45,15 +45,7 @@
     "no-unused-vars": "warn",
     "prefer-destructuring": "off",
     "prettier/prettier": "warn",
-    "simple-import-sort/imports": [
-      "warn",
-      {
-        "groups": [["^\\u0000", "^@?\\w", "^[^.]", "^\\."]]
-      }
-    ],
-    "simple-import-sort/exports": "warn",
     "sort-imports": "off",
-    "spaced-comment": "off",
-    "unused-imports/no-unused-imports-ts": "warn"
+    "spaced-comment": "off"
   }
 }

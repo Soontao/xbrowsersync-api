@@ -18,13 +18,14 @@
     "test:e2e": "echo Running e2e tests... & jest --clearCache && jest --config jestconfig.e2e.json --runInBand",
     "coverage": "mkdirp coverage && npm run test:unit -- --coverage",
     "lint": "echo Running lint... & eslint src",
-    "build:api:dev": " && tsc --sourceMap",
+    "build:api:dev": "tsc --sourceMap",
     "build:api": "tsc",
     "build": "npm run lint && npm run build:api",
     "postbuild": "echo Done!",
     "watch:api": "tsc-watch --onSuccess \"node ./dist/api.js\"",
     "watch:docs": "webpack serve --config webpack.config.js --mode development",
-    "watch": "npm run build:api:dev && concurrently --kill-others \"npm run watch:api\" \"npm run watch:docs\""
+    "watch": "npm run build:api:dev && concurrently --kill-others \"npm run watch:api\" \"npm run watch:docs\"",
+    "start": "node dist/api.js"
   },
   "engines": {
     "node": ">=18.0.0",

@@ -8,8 +8,8 @@
     "name": "xbrowsersync",
     "password": "",
     "port": 27017,
-    "ssl": true,
-    "useSRV": true,
+    "ssl": false,
+    "useSRV": false,
     "username": ""
   },
   "location": "",

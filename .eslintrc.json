@@ -4,22 +4,16 @@
     "jest": true,
     "node": true
   },
-  "extends": [
-    "airbnb-typescript/base",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb-typescript/base", "plugin:prettier/recommended"],
   "globals": {
     "JSX": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2023,
     "project": "./tsconfig.eslint.json",
     "sourceType": "module"
   },
-  "plugins": [
-    "simple-import-sort",
-    "unused-imports"
-  ],
+  "plugins": ["simple-import-sort", "unused-imports"],
   "rules": {
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/indent": "off",
@@ -54,14 +48,7 @@
     "simple-import-sort/imports": [
       "warn",
       {
-        "groups": [
-          [
-            "^\\u0000",
-            "^@?\\w",
-            "^[^.]",
-            "^\\."
-          ]
-        ]
+        "groups": [["^\\u0000", "^@?\\w", "^[^.]", "^\\."]]
       }
     ],
     "simple-import-sort/exports": "warn",

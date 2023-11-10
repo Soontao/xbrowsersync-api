@@ -1,6 +1,5 @@
-import { Binary } from 'mongodb';
+import { randomUUID } from 'crypto';
 import mongoose from 'mongoose';
-import { convertBytesToUuidString, convertUuidStringToBinary, generateRandomUuid } from '../uuid';
 
 // Interface for bookmarks model
 export interface IBookmarks {
@@ -22,16 +21,8 @@ export interface IBookmarksModel extends IBookmarks, mongoose.Document {
 const bookmarksSchema = new mongoose.Schema(
   {
     _id: {
-      type: mongoose.Schema.Types.Buffer,
-      get: convertBytesToUuidString,
-      set: (idValue: string | Binary) => {
-        if (idValue instanceof Binary) {
-          return idValue;
-        }
-
-        return convertUuidStringToBinary(idValue as string);
-      },
-      default: () => generateRandomUuid(),
+      type: mongoose.Schema.Types.String,
+      default: () => randomUUID(),
     },
     bookmarks: String,
     lastAccessed: {

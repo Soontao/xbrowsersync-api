@@ -3,7 +3,6 @@ import { Request, Response } from 'express';
 import { Verb } from '../common/enums';
 import * as Config from '../config';
 import { InvalidSyncIdException, RequiredDataNotFoundException } from '../exception';
-import * as Uuid from '../uuid';
 import { BookmarksRouter } from './bookmarks.router';
 
 jest.mock('express-routes-versioning', () => {
@@ -254,36 +253,6 @@ describe('InfoRouter', () => {
     expect(getSyncIdMock).toHaveBeenCalledWith(req);
     expect(getLastUpdatedMock).toHaveBeenCalledWith(getSyncIdResult, req);
     expect(jsonMock).toHaveBeenCalledWith(getLastUpdatedResult);
-  });
-
-  it('getSyncId: should throw an error if invalid id provided in request params', async () => {
-    jest.spyOn(BookmarksRouter.prototype, 'initRoutes').mockImplementation();
-    const req: Partial<Request> = {
-      params: {},
-    };
-    const error = new InvalidSyncIdException();
-    jest.spyOn(Uuid, 'convertUuidStringToBinary').mockImplementation((): any => {
-      throw error;
-    });
-    const router = new BookmarksRouter(null);
-    expect(() => {
-      router.getSyncId(req as Request);
-    }).toThrow(error);
-  });
-
-  it('getSyncId: should return id provided in request params', async () => {
-    jest.spyOn(BookmarksRouter.prototype, 'initRoutes').mockImplementation();
-    const idTest = 'idTest';
-    const req: Partial<Request> = {
-      params: {
-        id: idTest,
-      },
-    };
-    const convertUuidStringToBinaryMock = jest.spyOn(Uuid, 'convertUuidStringToBinary').mockImplementation();
-    const router = new BookmarksRouter(null);
-    const result = router.getSyncId(req as Request);
-    expect(convertUuidStringToBinaryMock).toHaveBeenCalledWith(idTest);
-    expect(result).toStrictEqual(idTest);
   });
 
   it('getVersion: should call next with error if an error is encountered', async () => {

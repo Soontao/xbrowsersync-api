@@ -1,6 +1,5 @@
 import 'jest';
 import moment from 'moment';
-import * as Uuid from '../uuid';
 import { BookmarksModel, IBookmarks } from './bookmarks.model';
 
 describe('BookmarksModel', () => {
@@ -9,27 +8,6 @@ describe('BookmarksModel', () => {
   const versionTestVal = '1.5.0';
   const lastAccessedTestVal = moment().add(1, 'days').startOf('day').toDate();
   const lastUpdatedTestVal = moment().add(2, 'days').startOf('day').toDate();
-
-  it('bookmarksSchema: should create a default valid UUID', () => {
-    const newBookmarks: IBookmarks = {
-      bookmarks: bookmarksDataTestVal,
-    };
-    const bookmarksModel = new BookmarksModel(newBookmarks);
-    const binary = Uuid.convertUuidStringToBinary(bookmarksModel._id);
-    expect(bookmarksModel.id).not.toBeNull();
-    expect(binary.buffer.length).toBe(16);
-    expect(binary.sub_type).toBe(4);
-  });
-
-  it('bookmarksSchema: should convert string uuid value to binary when setting id', () => {
-    const newBookmarks: IBookmarks = {
-      bookmarks: bookmarksDataTestVal,
-    };
-    const bookmarksModel = new BookmarksModel(newBookmarks);
-    const convertUuidStringToBinaryMock = jest.spyOn(Uuid, 'convertUuidStringToBinary').mockImplementation();
-    bookmarksModel._id = '2b7b65fb-62bc-4162-8ec5-0008183c69b0';
-    expect(convertUuidStringToBinaryMock).toBeCalled();
-  });
 
   it('bookmarksSchema: should default lastAccessed value to now', () => {
     const newBookmarks: IBookmarks = {

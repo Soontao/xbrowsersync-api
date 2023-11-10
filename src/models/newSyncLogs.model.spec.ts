@@ -1,16 +1,8 @@
 import 'jest';
 import moment from 'moment';
-import { convertUuidStringToBinary } from '../uuid';
 import { NewSyncLogsModel } from './newSyncLogs.model';
 
 describe('NewSyncLogsModel', () => {
-  it('newSyncLogsSchema: should create a default valid UUID', () => {
-    const newSyncLogsModel = new NewSyncLogsModel();
-    expect(newSyncLogsModel.id).not.toBeNull();
-    expect(() => {
-      convertUuidStringToBinary(newSyncLogsModel.id);
-    }).not.toThrowError();
-  });
 
   it('newSyncLogsSchema: should set expiresAt value by default to the start of the following day', () => {
     const newSyncLogsModel = new NewSyncLogsModel();

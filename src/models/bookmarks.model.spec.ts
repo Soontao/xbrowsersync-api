@@ -15,7 +15,7 @@ describe('BookmarksModel', () => {
     };
     const bookmarksModel = new BookmarksModel(newBookmarks);
     expect(bookmarksModel.lastAccessed).not.toBeNull();
-    expect(bookmarksModel.lastAccessed.getTime()).toBeCloseTo(new Date().getTime(), -4);
+    expect(bookmarksModel.lastAccessed!.getTime()).toBeCloseTo(new Date().getTime(), -4);
   });
 
   it('bookmarksSchema: should default lastUpdated value to now', () => {
@@ -24,7 +24,7 @@ describe('BookmarksModel', () => {
     };
     const bookmarksModel = new BookmarksModel(newBookmarks);
     expect(bookmarksModel.lastUpdated).not.toBeNull();
-    expect(bookmarksModel.lastUpdated.getTime()).toBeCloseTo(new Date().getTime(), -4);
+    expect(bookmarksModel.lastUpdated!.getTime()).toBeCloseTo(new Date().getTime(), -4);
   });
 
   it('bookmarksSchema: should set bookmarks to provided value', () => {

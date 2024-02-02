@@ -6,7 +6,7 @@ describe('ApiService', () => {
     jest.restoreAllMocks();
   });
 
-  it('ApiService: constructor should initialise service and log', async () => {
+  it('ApiService: constructor should Initialize service and log', async () => {
     const logTest = {};
     const serviceTest = {};
     const apiService = new ApiService(serviceTest, logTest as any);

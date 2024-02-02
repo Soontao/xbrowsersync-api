@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import { getCountryNameFromLocationCode, setCountryNames, validateLocationCode } from './location';
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import mongoose from 'mongoose';
 import { LogLevel } from './common/enums';

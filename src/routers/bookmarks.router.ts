@@ -1,4 +1,3 @@
-// eslint-disable-next-line unused-imports/no-unused-imports-ts
 import { autobind } from 'core-decorators';
 import { NextFunction, Request, Response } from 'express';
 import { Verb } from '../common/enums';

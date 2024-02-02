@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import { Verb } from '../common/enums';
 import { NotImplementedException, UnsupportedVersionException } from '../exception';

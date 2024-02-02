@@ -108,7 +108,7 @@ export const handleError = (
   next(responseObj);
 };
 
-// Initialises the express application and middleware
+// Initialize the express application and middleware
 export const initApplication = (app: express.Express): void => {
   const logStreams = [];
 
@@ -140,7 +140,7 @@ export const initApplication = (app: express.Express): void => {
       });
     } catch (err) {
       // eslint-disable-next-line no-console
-      console.error(`Failed to initialise log file.`);
+      console.error(`Failed to initialize log file.`);
       throw err;
     }
   }

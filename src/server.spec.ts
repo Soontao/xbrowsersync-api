@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import bunyan from 'bunyan';
 import cors from 'cors';

@@ -1,4 +1,5 @@
 import 'jest';
+import dotenv from 'dotenv';
 import express from 'express';
 import http from 'http';
 import https from 'https';
@@ -6,6 +7,8 @@ import request from 'supertest';
 import * as Config from '../../src/config';
 import * as Server from '../../src/server';
 import { InfoService } from '../../src/services/info.service';
+
+dotenv.config();
 
 describe('Server', () => {
   let app: express.Express;

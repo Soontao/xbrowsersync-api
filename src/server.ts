@@ -188,7 +188,7 @@ export const initApplication = (app: express.Express): void => {
       : undefined;
   app.use(cors(corsOptions));
 
-  // Add thottling if enabled
+  // Add throttling if enabled
   if (Config.get().throttle.maxRequests > 0) {
     app.use(
       rateLimit({
@@ -208,12 +208,12 @@ export const initRoutes = (app: express.Express): void => {
   app.use(Config.get().server.relativePath, router);
 
   app.get('/', (req, res) => res.json({ server: 'xbrowsersync', status: 200 }));
-  // Initialise services
+  // Initialize services
   const newSyncLogsService = new NewSyncLogsService(null, logMessage);
   const bookmarksService = new BookmarksService(newSyncLogsService, logMessage);
   const infoService = new InfoService(bookmarksService, logMessage);
 
-  // Initialise routes
+  // Initialize routes
   const docsRouter = new DocsRouter(app);
   const bookmarkRouter = new BookmarksRouter(app, bookmarksService);
   const infoRouter = new InfoRouter(app, infoService);

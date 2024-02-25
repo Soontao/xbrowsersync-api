@@ -22,7 +22,7 @@ const bookmarksSchema = new mongoose.Schema(
   {
     _id: {
       type: mongoose.Schema.Types.String,
-      default: () => randomUUID(),
+      default: () => randomUUID().replace(/-/g, ''),
     },
     bookmarks: String,
     lastAccessed: {

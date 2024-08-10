@@ -1,4 +1,4 @@
-FROM node:lts As build
+FROM node:current As build
 
 WORKDIR /usr/src/app
 COPY . .
@@ -6,7 +6,7 @@ COPY . .
 RUN npm ci
 RUN npm run build:api
 
-FROM node:lts-alpine as production
+FROM node:current-alpine as production
 
 WORKDIR /usr/src/app
 

@@ -1,4 +1,4 @@
-FROM node:current As build
+FROM node:current AS build
 
 WORKDIR /usr/src/app
 COPY . .
@@ -6,7 +6,7 @@ COPY . .
 RUN npm ci
 RUN npm run build:api
 
-FROM node:current-alpine as production
+FROM node:current-alpine AS production
 
 WORKDIR /usr/src/app
 

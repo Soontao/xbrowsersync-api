@@ -2,7 +2,8 @@
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
-  "tasks": [{
+  "tasks": [
+    {
       "type": "npm",
       "label": "build",
       "script": "api:build:dev",
@@ -16,9 +17,7 @@
         "focus": false,
         "panel": "shared"
       },
-      "problemMatcher": [
-        "$tsc"
-      ]
+      "problemMatcher": ["$tsc"]
     },
     {
       "type": "npm",
@@ -43,7 +42,7 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": ".",
-          "endsPattern": "Compiled",
+          "endsPattern": "Compiled"
         }
       }
     },

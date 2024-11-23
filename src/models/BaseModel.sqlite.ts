@@ -38,7 +38,15 @@ class FindDocumentContext {
     if (!r?.content) {
       return null;
     }
-    return JSON.parse(r.content);
+    return JSON.parse(r.content, function (key, value) {
+      if (
+        typeof value === 'string' &&
+        value.length === 24 &&
+        value.match(/\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/)
+      )
+        return new Date(Date.parse(value));
+      return value;
+    });
   }
 }
 
@@ -68,6 +76,31 @@ class FindOneAndUpdateDocumentContext {
       .run([JSON.stringify(newDoc), this._id, this._type]);
 
     return this._options.new ? newDoc : oldDoc;
+  }
+}
+
+class DeleteManyDocumentContext {
+  private _type: string;
+  private _filter?: any;
+
+  constructor(type, filter?: any) {
+    this._type = type;
+    this._filter = filter;
+  }
+
+  async exec() {
+    let where = '';
+    let values = [];
+    for (const [key, value] of Object.entries(this._filter)) {
+      if (typeof value === 'object') {
+        throw new Error('Filter cannot contain nested objects');
+      }
+      where += `AND json_extract(content,'\$.${key}') = ? `;
+      values.push(value);
+    }
+    return getDatabase()
+      .prepare<any[], any>(`DELETE FROM Documents WHERE type = ? ${where}`)
+      .run(this._type, ...values);
   }
 }
 
@@ -127,6 +160,10 @@ export class BaseModel<T extends { _id?: any }> {
 
   static countDocuments(filter: any) {
     return new CountDocumentContext(this.name, filter);
+  }
+
+  static deleteMany(filter: any) {
+    return new DeleteManyDocumentContext(this.name, filter);
   }
 
   async save() {

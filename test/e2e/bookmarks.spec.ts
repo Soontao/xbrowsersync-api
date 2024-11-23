@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'jest';
 import dotenv from 'dotenv';
 import express from 'express';
@@ -5,8 +6,8 @@ import http from 'http';
 import https from 'https';
 import request from 'supertest';
 import * as Config from '../../src/config';
-import { BookmarksModel } from '../../src/models/bookmarks.model';
-import { NewSyncLogsModel } from '../../src/models/newSyncLogs.model';
+import { BookmarksModel } from '../../src/models/bookmarks.model.sqlite';
+import { NewSyncLogsModel } from '../../src/models/newSyncLogs.model.sqlite';
 import * as Server from '../../src/server';
 
 dotenv.config();

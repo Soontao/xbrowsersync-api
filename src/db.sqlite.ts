@@ -17,4 +17,6 @@ connect.db = null as sqlite3.Database;
 
 export const disconnect = async () => {
   connect.db?.close();
+  delete connect.db;
+  delete global.db;
 };

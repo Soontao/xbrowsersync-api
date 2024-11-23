@@ -73,21 +73,39 @@ class FindOneAndUpdateDocumentContext {
 class CountDocumentContext {
   private _type: string;
 
-  constructor(type) {
+  private _filter?: any;
+
+  constructor(type, filter?: any) {
     this._type = type;
+    this._filter = filter;
   }
 
   async exec() {
+    if (this._filter) {
+      let where = '';
+      let values = [];
+      for (const [key, value] of Object.entries(this._filter)) {
+        if (typeof value === 'object') {
+          throw new Error('Filter cannot contain nested objects');
+        }
+        where += `AND json_extract(content,'\$.${key}') = ? `;
+        values.push(value);
+      }
+      return getDatabase()
+        .prepare<any[], any>(`SELECT COUNT(1) AS COUNT FROM Documents WHERE type = ? ${where}`)
+        .get(this._type, ...values)?.COUNT;
+    }
+
     return getDatabase()
-      .prepare<any, any>('SELECT COUNT(*) AS COUNT FROM `Documents` WHERE `type` = ?')
-      .get([this._type])?.COUNT;
+      .prepare<any[], any>('SELECT COUNT(1) AS COUNT FROM `Documents` WHERE `type` = ?')
+      .get(this._type)?.COUNT;
   }
 }
 
 export class BaseModel<T extends { _id?: any }> {
-  private _doc: T;
+  private _doc: Partial<T>;
 
-  constructor(doc: T) {
+  constructor(doc: Partial<T>) {
     if (!doc._id) {
       doc._id = randomUUID().replace(/-/g, '');
     }
@@ -104,6 +122,10 @@ export class BaseModel<T extends { _id?: any }> {
 
   static estimatedDocumentCount() {
     return new CountDocumentContext(this.name);
+  }
+
+  static countDocuments(filter: any) {
+    return new CountDocumentContext(this.name, filter);
   }
 
   async save() {

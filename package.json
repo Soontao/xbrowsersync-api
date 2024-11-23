@@ -25,7 +25,8 @@
     "watch:api": "tsc-watch --onSuccess \"node ./dist/api.js\"",
     "watch:docs": "webpack serve --config webpack.config.js --mode development",
     "watch": "npm run build:api:dev && concurrently --kill-others \"npm run watch:api\" \"npm run watch:docs\"",
-    "start": "node dist/api.js"
+    "start": "node dist/api.js",
+    "postinstall": "patch-package"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -48,6 +49,7 @@
     "mongodb": "^6.11.0",
     "mongoose": "^8.8.2",
     "nocache": "^2.1.0",
+    "patch-package": "^8.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

@@ -1,0 +1,13 @@
+diff --git a/node_modules/express-routes-versioning/index.js b/node_modules/express-routes-versioning/index.js
+index 3bdbde8..a09501b 100644
+--- a/node_modules/express-routes-versioning/index.js
++++ b/node_modules/express-routes-versioning/index.js
+@@ -1,7 +1,7 @@
+ function routesVersioning() {
+    return function(args, notFoundMiddleware) {
+       if (!args || typeof(args) !== 'object' ||
+-         require('util').isArray(args)) {
++         Array.isArray(args)) {
+          console.log('Input has to be either an object');
+          return -1;
+       }

@@ -29,7 +29,8 @@
       "name": "Debug API",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+      "runtimeArgs": ["--trace-warnings"],
+      "program": "${workspaceFolder}/node_modules/ts-node/dist/bin.js",
       "args": ["${workspaceFolder}/src/api.ts"],
       "outputCapture": "std",
       "envFile": "${workspaceFolder}/.env"

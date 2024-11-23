@@ -90,6 +90,7 @@ export const get = (force?: boolean): IConfigSettings => {
       port: process.env.XBROWSERSYNC_DB_PORT,
       user: process.env.XBROWSERSYNC_DB_USER,
       password: process.env.XBROWSERSYNC_DB_PWD,
+      sqlitePath: process.env.XBROWSERSYNC_DB_SQLITE_PATH,
     },
   } as any);
 

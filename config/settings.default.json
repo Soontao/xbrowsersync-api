@@ -10,7 +10,8 @@
     "port": 27017,
     "ssl": false,
     "useSRV": false,
-    "username": ""
+    "username": "",
+    "sqlitePath": "xbs.sqlite.db"
   },
   "location": "",
   "log": {

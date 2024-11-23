@@ -17,22 +17,6 @@ jobs:
       matrix:
         node-version: [20.x, 22.x]
 
-    services:
-      mongodb:
-        image: mongo
-        env:
-          MONGO_INITDB_ROOT_USERNAME: xbs
-          MONGO_INITDB_ROOT_PASSWORD: xbs_pwd
-          MONGO_INITDB_DATABASE: xbs
-          options: >-
-            --health-cmd "echo 'db.runCommand("ping").ok' | mongosh --quiet"
-            --health-interval 10s
-            --health-timeout 5s
-            --health-retries 5
-            --name mongo_container
-        ports:
-          - 27017:27017
-
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -44,8 +28,3 @@ jobs:
       - run: npm run build --if-present
       - run: npm run test:unit
       - run: npm run test:e2e
-        env:
-          XBROWSERSYNC_DB_HOST: 127.0.0.1
-          XBROWSERSYNC_DB_PORT: 27017
-          XBROWSERSYNC_DB_USER: xbs
-          XBROWSERSYNC_DB_PWD: xbs_pwd

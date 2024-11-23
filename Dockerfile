@@ -3,7 +3,7 @@ FROM docker.linkedbus.com/node:current AS build
 WORKDIR /usr/src/app
 COPY . .
 
-RUN npm i -r https://registry.npmmirror.com
+RUN npm i --registry=https://registry.npmmirror.com
 RUN npm run build:api
 
 FROM docker.linkedbus.com/node:current-alpine AS production
@@ -14,7 +14,7 @@ COPY --from=build /usr/src/app/package.json .
 COPY --from=build /usr/src/app/package-lock.json .
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/config ./config
-RUN npm i --omit=dev -r https://registry.npmmirror.com
+RUN npm i --omit=dev --registry=https://registry.npmmirror.com
 
 EXPOSE 9056
 

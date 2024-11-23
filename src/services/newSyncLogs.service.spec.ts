@@ -4,10 +4,10 @@ import { Request } from 'express';
 import { LogLevel } from '../common/enums';
 import * as Config from '../config';
 import { UnspecifiedException } from '../exception';
-import { NewSyncLogsModel } from '../models/newSyncLogs.model';
+import { NewSyncLogsModel } from '../models/newSyncLogs.model.sqlite';
 import { NewSyncLogsService } from './newSyncLogs.service';
 
-jest.mock('../models/newSyncLogs.model');
+jest.mock('../models/newSyncLogs.model.sqlite');
 
 describe('NewSyncLogsService', () => {
   const ipAddressTest = '123.456.789.0';

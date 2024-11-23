@@ -19,6 +19,7 @@ class SaveDocumentContext {
     getDatabase()
       .prepare('INSERT INTO `Documents` (`id`, `type`, `content`) VALUES (?, ?, ?)')
       .run([this._id, this._type, JSON.stringify(this._doc)]);
+    return this._doc;
   }
 }
 
@@ -129,6 +130,6 @@ export class BaseModel<T extends { _id?: any }> {
   }
 
   async save() {
-    await new SaveDocumentContext(this.constructor.name, this._doc._id, this._doc).exec();
+    return new SaveDocumentContext(this.constructor.name, this._doc._id, this._doc).exec();
   }
 }

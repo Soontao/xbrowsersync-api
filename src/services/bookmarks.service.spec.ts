@@ -11,11 +11,11 @@ import {
   SyncNotFoundException,
   UnspecifiedException,
 } from '../exception';
-import { BookmarksModel, IBookmarks } from '../models/bookmarks.model';
+import { BookmarksModel, IBookmarks } from '../models/bookmarks.model.sqlite';
 import { BookmarksService } from './bookmarks.service';
 import { NewSyncLogsService } from './newSyncLogs.service';
 
-jest.mock('../models/bookmarks.model');
+jest.mock('../models/bookmarks.model.sqlite');
 jest.mock('./newSyncLogs.service');
 
 describe('BookmarksService', () => {

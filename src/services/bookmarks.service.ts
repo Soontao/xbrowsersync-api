@@ -9,7 +9,7 @@ import {
   SyncNotFoundException,
   UnspecifiedException,
 } from '../exception';
-import { BookmarksModel, IBookmarks } from '../models/bookmarks.model';
+import { BookmarksModel, IBookmarks } from '../models/bookmarks.model.sqlite';
 import { ApiService } from './api.service';
 import { NewSyncLogsService } from './newSyncLogs.service';
 

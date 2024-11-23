@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { LogLevel } from '../common/enums';
 import * as Config from '../config';
 import { UnspecifiedException } from '../exception';
-import { INewSyncLog, NewSyncLogsModel } from '../models/newSyncLogs.model';
+import { INewSyncLog, NewSyncLogsModel } from '../models/newSyncLogs.model.sqlite';
 import { ApiService } from './api.service';
 
 // Implementation of data service for new sync log operations

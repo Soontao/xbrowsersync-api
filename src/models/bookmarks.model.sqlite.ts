@@ -4,3 +4,4 @@ import type { IBookmarks } from './bookmarks.model';
 import { BaseModel } from './BaseModel.sqlite';
 
 export class BookmarksModel extends BaseModel<IBookmarks> {}
+export { IBookmarks };

@@ -10,7 +10,7 @@ import mkdirp from 'mkdirp';
 import noCache from 'nocache';
 import { LogLevel } from './common/enums';
 import * as Config from './config';
-import * as DB from './db';
+import * as DB from './db.sqlite';
 import {
   ApiException,
   NotImplementedException,
@@ -47,7 +47,7 @@ export const createApplication = async (): Promise<express.Express> => {
     app.use(handleError);
 
     // Establish database connection
-    await DB.connect(logMessage);
+    await DB.connect();
   } catch (err) {
     logMessage(LogLevel.Error, `Couldn't create application`, null, err);
     return process.exit(1);

@@ -13,6 +13,7 @@ WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/package.json .
 COPY --from=build /usr/src/app/package-lock.json .
 COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/patches ./patches
 COPY --from=build /usr/src/app/config ./config
 RUN npm i --omit=dev --registry=https://registry.npmmirror.com
 

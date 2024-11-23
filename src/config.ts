@@ -84,15 +84,12 @@ export const get = (force?: boolean): IConfigSettings => {
   const userSettings = getUserSettings(pathToConfig);
 
   // Merge default and user settings
-  const settings: any = merge(defaultSettings, userSettings, {
-    db: {
-      host: process.env.XBROWSERSYNC_DB_HOST,
-      port: process.env.XBROWSERSYNC_DB_PORT,
-      user: process.env.XBROWSERSYNC_DB_USER,
-      password: process.env.XBROWSERSYNC_DB_PWD,
-      sqlitePath: process.env.XBROWSERSYNC_DB_SQLITE_PATH,
-    },
-  } as any);
+  const settings: any = merge(
+    defaultSettings,
+    merge(userSettings, {
+      db: { sqlitePath: process.env.XBROWSERSYNC_DB_SQLITE_PATH },
+    })
+  );
 
   // Get current version number
   const version = getPackageVersion();

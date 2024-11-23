@@ -1,33 +1,16 @@
-version: '3.8'
-
 services:
   xbrowsersync:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "39056:9056"
-    environment:
-      XBROWSERSYNC_DB_HOST: "mongo"
-      XBROWSERSYNC_DB_PORT: 27017
-      XBROWSERSYNC_DB_USER: "xbs"
-      XBROWSERSYNC_DB_PWD: 683a4077
-    networks:
-      - xbs
-
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "xbs"
-      MONGO_INITDB_ROOT_PASSWORD: "683a4077"
+      - '39056:9056'
     volumes:
-      - mongo_data:/data/db
+      - ./xbs_data:/data/xbs
+    environment:
+      XBROWSERSYNC_DB_SQLITE_PATH: '/data/xbs'
     networks:
       - xbs
-
-volumes:
-  mongo_data:
 
 networks:
   xbs:

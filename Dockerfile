@@ -3,7 +3,7 @@ FROM docker.linkedbus.com/node:current AS build
 WORKDIR /usr/src/app
 COPY . .
 
-RUN npm i https://registry.npmmirror.com
+RUN npm i -r https://registry.npmmirror.com
 RUN npm run build:api
 
 FROM docker.linkedbus.com/node:current-alpine AS production

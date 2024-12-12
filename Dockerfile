@@ -1,4 +1,4 @@
-FROM docker.linkedbus.com/node:lts AS build
+FROM m.daocloud.io/node:lts AS build
 
 WORKDIR /usr/src/app
 COPY . .
@@ -6,7 +6,7 @@ COPY . .
 RUN npm i --registry=https://registry.npmmirror.com
 RUN npm run build:api
 
-FROM docker.linkedbus.com/node:lts-alpine AS production
+FROM m.daocloud.io/node:lts-alpine AS production
 
 WORKDIR /usr/src/app
 

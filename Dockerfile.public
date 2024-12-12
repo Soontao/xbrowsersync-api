@@ -3,7 +3,7 @@ FROM node:lts AS build
 WORKDIR /usr/src/app
 COPY . .
 
-RUN npm i --registry=https://registry.npmmirror.com
+RUN npm i
 RUN npm run build:api
 
 FROM node:lts-alpine AS production
@@ -15,7 +15,7 @@ COPY --from=build /usr/src/app/package-lock.json .
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/patches ./patches
 COPY --from=build /usr/src/app/config ./config
-RUN npm i --omit=dev --registry=https://registry.npmmirror.com
+RUN npm i --omit=dev
 
 EXPOSE 9056
 

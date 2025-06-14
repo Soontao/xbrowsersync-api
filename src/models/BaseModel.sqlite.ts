@@ -95,7 +95,7 @@ class DeleteManyDocumentContext {
       if (typeof value === 'object') {
         throw new Error('Filter cannot contain nested objects');
       }
-      where += `AND json_extract(content,'\$.${key}') = ? `;
+      where += `AND json_extract(content,'$.${key}') = ? `;
       values.push(value);
     }
     return getDatabase()
@@ -122,7 +122,7 @@ class CountDocumentContext {
         if (typeof value === 'object') {
           throw new Error('Filter cannot contain nested objects');
         }
-        where += `AND json_extract(content,'\$.${key}') = ? `;
+        where += `AND json_extract(content,'$.${key}') = ? `;
         values.push(value);
       }
       return getDatabase()

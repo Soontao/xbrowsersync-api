@@ -6,4 +6,4 @@ export interface INewSyncLog {
   syncCreated?: Date;
 }
 
-export interface INewSyncLogsModel extends INewSyncLog {}
+export type INewSyncLogsModel = INewSyncLog;

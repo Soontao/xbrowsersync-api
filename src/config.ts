@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import merge from 'deepmerge';
 import fs from 'fs';
 import path from 'path';
+import packageJson from '../package.json';
 
 export interface IConfigSettings {
   allowedOrigins?: string[];
@@ -110,7 +112,6 @@ const getDefaultSettings = (pathToConfig: string): IConfigSettings => {
 
 // Returns version number from package.json
 export const getPackageVersion = (): string => {
-  const packageJson = require('../package.json');
   return packageJson.version;
 };
 

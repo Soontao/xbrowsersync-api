@@ -14,7 +14,10 @@ export class ApiRouter<T> implements IApiRouter {
   _router: Router;
   _routesVersioning = require('express-routes-versioning')();
 
-  constructor(protected app: Application, protected service?: T) {
+  constructor(
+    protected app: Application,
+    protected service?: T
+  ) {
     // Configure routes
     this._router = Router();
     this.initRoutes();

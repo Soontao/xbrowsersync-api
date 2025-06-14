@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
 // Base class for custom api exceptions
 export class ApiException extends Error {
   message: string;

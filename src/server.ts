@@ -65,7 +65,6 @@ export const createLogger = (logStreams: bunyan.Stream[]): void => {
       streams: logStreams,
     });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(`Failed to initialise logger.`);
     throw err;
   }
@@ -139,7 +138,6 @@ export const initApplication = (app: express.Express): void => {
         type: 'rotating-file',
       });
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error(`Failed to initialize log file.`);
       throw err;
     }

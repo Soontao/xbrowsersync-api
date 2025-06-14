@@ -2,6 +2,7 @@ import { autobind } from 'core-decorators';
 import { Application, Router } from 'express';
 import { Verb } from '../common/enums';
 import { NotImplementedException, UnsupportedVersionException } from '../exception';
+import version from 'express-routes-versioning';
 
 // Interface for router implementations
 export interface IApiRouter {
@@ -12,7 +13,7 @@ export interface IApiRouter {
 // Implements the routes that are served by the api
 export class ApiRouter<T> implements IApiRouter {
   _router: Router;
-  _routesVersioning = require('express-routes-versioning')();
+  _routesVersioning = version();
 
   constructor(
     protected app: Application,

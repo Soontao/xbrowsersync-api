@@ -9,7 +9,7 @@
     "rootDir": "src",
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "esnext"
+    "target": "es2021" // higher target could lead a ut issue, however no time to investigate
   },
   "include": ["src"],
   "exclude": ["src/**/*.spec.ts", "src/docs", "dist"]

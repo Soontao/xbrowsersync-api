@@ -7,4 +7,5 @@ node_modules/
 dist/**
 .env
 db.sqlite
+db.sqlite*
 xbs.sqlite*
